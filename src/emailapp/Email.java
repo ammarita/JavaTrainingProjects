@@ -8,9 +8,11 @@ public class Email {
     private String password;
     private String department;
     private String email;
+    private String alternateEmail;
     private String companyEmailEnding = "guidetothegalaxy.com";
-    private int mailboxSize;
+    private int mailboxSize = 500;
     private int defaultPasswordLength = 10;
+
 
     //Constructor to receive first and last name
     public Email(String firstName, String lastName) {
@@ -63,10 +65,18 @@ public class Email {
     }
 
     //Set the mailbox size
-
+    public void setMailboxSize(int size) {
+        this.mailboxSize = size;
+    }
 
     //Set the alternate email
+    public void setAlternateEmail(String altEmail) {
+        this.alternateEmail = altEmail;
+    }
 
     //Change the password
+    public void changePassword(String password) {
+        this.password = password;
+    }
 
 }
