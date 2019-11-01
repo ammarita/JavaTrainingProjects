@@ -83,4 +83,10 @@ public class Email {
     public String getAlternateEmail() {return alternateEmail;}
     public String getPassword() {return password;}
 
+    public String showInfo() {
+        return "CONTACT NAME: " + firstName + " " + lastName +
+                "\nCOMPANY E-MAIL: " + email +
+                "\nMAILBOX SIZE: " + mailboxSize + " mb";
+    }
+
 }
