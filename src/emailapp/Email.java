@@ -13,7 +13,6 @@ public class Email {
     private int mailboxSize = 500;
     private int defaultPasswordLength = 10;
 
-
     //Constructor to receive first and last name
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
@@ -34,9 +33,9 @@ public class Email {
         } else {
             email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department.toLowerCase() + "." + companyEmailEnding;
         }
-
         System.out.println("Your e-mail is: " + email);
     }
+
     //Ask for department
     private String setDepartment() {
         System.out.println("DEPARTMENT CODES:\n1 - Sales; 2 - Development; 3 - Accounting' 0 - none\nEnter department code: ");
@@ -78,5 +77,10 @@ public class Email {
     public void changePassword(String password) {
         this.password = password;
     }
+
+    //Getters for mailbox size, password and alt email
+    public int getMailboxSize() {return mailboxSize;}
+    public String getAlternateEmail() {return alternateEmail;}
+    public String getPassword() {return password;}
 
 }
