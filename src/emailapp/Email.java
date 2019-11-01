@@ -7,7 +7,8 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
-    private String alternateEmail;
+    private String email;
+    private String companyEmailEnding = "guidetothegalaxy.com";
     private int mailboxSize;
     private int defaultPasswordLength = 10;
 
@@ -24,6 +25,15 @@ public class Email {
         //Call a method that generates a password
         this.password = generatePassword(defaultPasswordLength);
         System.out.println("Your password is: " + this.password);
+
+        //Generate e-mail
+        if(department.equals("")) {
+            email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + companyEmailEnding;
+        } else {
+            email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department.toLowerCase() + "." + companyEmailEnding;
+        }
+
+        System.out.println("Your e-mail is: " + email);
     }
     //Ask for department
     private String setDepartment() {
@@ -53,6 +63,7 @@ public class Email {
     }
 
     //Set the mailbox size
+
 
     //Set the alternate email
 
