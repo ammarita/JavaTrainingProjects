@@ -23,8 +23,6 @@ public class Student {
         System.out.print("Enter student's class level\n(1 - Freshmen; 2 - Sophomore; 3 - Junior; 4 - Senior): ");
         this.classLevel = sc.nextInt();
         setStudentId();
-
-        System.out.println(firstName + " " + lastName + " " + classLevel + " " + studentId);
     }
 
     //generate id that contains class level and 4 more digits
@@ -40,14 +38,12 @@ public class Student {
             Scanner sc = new Scanner(System.in);
             String course = sc.nextLine();
             if(!course.equals("Q")) {
-                courses += "\n" + course;
+                courses += "\n " + course;
                 tuitionBalance += courseCost;
             } else {
                 break;
             }
         } while(true);
-
-        System.out.println("ENROLLED IN:" + courses);
     }
 
     //view balance
@@ -69,6 +65,8 @@ public class Student {
     //show info about student
     public String showInfo() {
         return "Name: " + firstName + " " + lastName +
+                "\nClass Level: " + classLevel +
+                "\nStudent ID: " + studentId +
                 "\nCourses Enrolled: " + courses +
                 "\nBalance: $ " + tuitionBalance;
     }
