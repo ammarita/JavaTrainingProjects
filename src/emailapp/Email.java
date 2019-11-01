@@ -17,15 +17,13 @@ public class Email {
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        System.out.println("E-MAIL CREATED FOR: " + this.firstName + " " + this.lastName);
 
         //Call a method that asks for the department and returns department
         this.department = setDepartment();
-        System.out.println("Department: " + this.department);
 
         //Call a method that generates a password
         this.password = generatePassword(defaultPasswordLength);
-        System.out.println("Your password is: " + this.password);
+        System.out.println("Your first time password is: " + this.password);
 
         //Generate e-mail
         if(department.equals("")) {
@@ -33,12 +31,11 @@ public class Email {
         } else {
             email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department.toLowerCase() + "." + companyEmailEnding;
         }
-        System.out.println("Your e-mail is: " + email);
     }
 
     //Ask for department
     private String setDepartment() {
-        System.out.println("DEPARTMENT CODES:\n1 - Sales; 2 - Development; 3 - Accounting' 0 - none\nEnter department code: ");
+        System.out.println("DEPARTMENT CODES:\n1 - Sales; 2 - Development; 3 - Accounting; 0 - none\nEnter department code: ");
         Scanner sc = new Scanner(System.in);
         int departmentChoice = sc.nextInt();
         if(departmentChoice == 1) {
