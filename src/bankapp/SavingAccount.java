@@ -2,8 +2,8 @@ package bankapp;
 
 public class SavingAccount extends Account {
     // List properties specific for savings account
-    int safetyDepositBoxId;
-    int safetyDepositBoxKey;
+    int safetyDepositBoxId; //3 digits
+    int safetyDepositBoxKey; //4 digits
 
     //List methods specific for savings acc
 
@@ -11,10 +11,18 @@ public class SavingAccount extends Account {
     public SavingAccount(String name, String socSecurityNo, double startingBalance) {
         super(name, socSecurityNo, startingBalance);
         accountNo = 1 + accountNo;
+        setSafetyDepositBox();
+    }
+
+    private void setSafetyDepositBox() {
+        safetyDepositBoxId = (int) (Math.random() * Math.pow(10, 3));
+        safetyDepositBoxKey = (int) (Math.random() * Math.pow(10, 4));
     }
 
     public void showInfo() {
-        super.showInfo();
         System.out.println("ACCOUNT TYPE: Saving");
+        super.showInfo();
+        System.out.println("Safety Deposit Box ID: " + safetyDepositBoxId +
+                "\nSafety Deposit Box Key: " + safetyDepositBoxKey);
     }
 }
