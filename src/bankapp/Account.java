@@ -35,6 +35,13 @@ public abstract class Account implements IBaseRate {
         return lastTwoOfSsn + uniqueId + randomNum;
     }
 
+    public void compound() {
+        double accruedInterest = balance * (rate / 100);
+        balance += accruedInterest;
+        System.out.println("Accrued interest: EUR " + accruedInterest);
+        printBalance();
+    }
+
     public void deposit(double amount) {
         balance += amount;
         System.out.println("Depositing EUR " + amount);

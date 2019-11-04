@@ -10,9 +10,7 @@ public class BankAccountApp {
         System.out.println("---");
         savings1.showInfo();
 
-        savings1.deposit(2000);
-        savings1.withdraw(100);
-        savings1.transfer("Film Studio", 3000);
+        savings1.compound();
 
         //Read CSV and create new accounts corresponding that file
 
