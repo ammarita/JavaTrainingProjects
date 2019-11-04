@@ -2,8 +2,8 @@ package bankapp;
 
 public class CheckingAccount extends Account {
     // List properties specific for checking account
-    int debitCardNo; //12 digits
-    int debitCardPin; // 4 digits
+    private int debitCardNo; //12 digits
+    private int debitCardPin; // 4 digits
 
     //List methods specific for checking acc
 

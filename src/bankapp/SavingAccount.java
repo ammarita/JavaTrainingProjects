@@ -2,8 +2,8 @@ package bankapp;
 
 public class SavingAccount extends Account {
     // List properties specific for savings account
-    int safetyDepositBoxId; //3 digits
-    int safetyDepositBoxKey; //4 digits
+    private int safetyDepositBoxId; //3 digits
+    private int safetyDepositBoxKey; //4 digits
 
     //List methods specific for savings acc
 
