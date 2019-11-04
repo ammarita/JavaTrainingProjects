@@ -11,7 +11,10 @@ public class SavingAccount extends Account {
     public SavingAccount(String name, String socSecurityNo, double startingBalance) {
         super(name, socSecurityNo, startingBalance);
         accountNo = 1 + accountNo;
-        System.out.println("ACCOUNT NO: " + this.accountNo);
-        System.out.println("NEW SAVINGS ACCOUNT");
+    }
+
+    public void showInfo() {
+        super.showInfo();
+        System.out.println("ACCOUNT TYPE: Saving");
     }
 }
