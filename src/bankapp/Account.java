@@ -20,7 +20,11 @@ public abstract class Account implements IBaseRate {
         //Set Acc No
         index++;
         this.accountNo = setAccountNo();
+
+        setRate();
     }
+
+    public abstract void setRate();
 
     private String setAccountNo() {
         //11 digit No - starts with 1 for savings or with 2 for checking, two last digits from SSN, 5 digit unique id and 3 random digits
@@ -35,6 +39,7 @@ public abstract class Account implements IBaseRate {
     public void showInfo() {
         System.out.println("NAME: " + name +
                 "\nACCOUNT NO: " + accountNo +
-                "\nBALANCE: EUR " + balance);
+                "\nBALANCE: EUR " + balance +
+                "\nRATE: " + rate + "%");
     }
 }

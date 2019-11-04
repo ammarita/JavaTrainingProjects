@@ -14,6 +14,11 @@ public class CheckingAccount extends Account {
         setDebitCard();
     }
 
+    @Override
+    public void setRate() {
+        rate = getBaseRate() * 0.15;
+    }
+
     private void setDebitCard() {
         debitCardNo = (int) (Math.random() * Math.pow(10, 12));
         debitCardPin = (int) (Math.random() * Math.pow(10, 4));
