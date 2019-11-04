@@ -35,6 +35,28 @@ public abstract class Account implements IBaseRate {
         return lastTwoOfSsn + uniqueId + randomNum;
     }
 
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Depositing EUR " + amount);
+        printBalance();
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+        System.out.println("Withdrawing EUR " + amount);
+        printBalance();
+    }
+
+    public void transfer(String destination, double amount) {
+        balance -= amount;
+        System.out.println("Transferring EUR " + amount + " to " + destination);
+        printBalance();
+    }
+
+    public void printBalance() {
+        System.out.println("Your balance now is: EUR " + balance);
+    }
+
     //List common methods
     public void showInfo() {
         System.out.println("NAME: " + name +
