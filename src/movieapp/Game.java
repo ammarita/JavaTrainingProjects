@@ -2,15 +2,14 @@ package movieapp;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     File file = new File("C:\\Users\\marita.lasmane\\Downloads\\JavaTrainingProjects\\src\\movieapp\\movies.txt");
     List<String> movieList = new ArrayList<>();
-    List<String> wrongGuesses = new ArrayList<>();
+    Set<String> wrongGuesses = new LinkedHashSet<>();
     String movie = "";
+    String hiddenMovieName = "";
 
     public Game() {
         createMovieList();
@@ -39,7 +38,8 @@ public class Game {
 
     //Replace movie name with -
     public String hideMovie() {
-        return movie.replaceAll(".", "-");
+        hiddenMovieName = movie.replaceAll(".", "-");
+        return hiddenMovieName;
     }
 
     //Show wrong guesses
@@ -49,5 +49,12 @@ public class Game {
             wrongGuess = guess + " ";
         }
         return wrongGuess;
+    }
+
+    //Checking if movie contains guessed letter
+    public void checkGuess(String guess) {
+        if(!movie.contains(guess)) {
+            wrongGuesses.add(guess);
+        }
     }
 }
