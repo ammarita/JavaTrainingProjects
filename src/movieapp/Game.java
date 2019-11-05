@@ -5,11 +5,12 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Game {
-    File file = new File("C:\\Users\\marita.lasmane\\Downloads\\JavaTrainingProjects\\src\\movieapp\\movies.txt");
+    File file = new File("C:\\Users\\marit\\IdeaProjects\\JavaTrainingProjects\\src\\movieapp\\movies.txt");
     List<String> movieList = new ArrayList<>();
     Set<String> wrongGuesses = new LinkedHashSet<>();
     String movie = "";
     String hiddenMovieName = "";
+    boolean isPlaying = true;
 
     public Game() {
         createMovieList();
@@ -46,15 +47,51 @@ public class Game {
     public String  showWrongGuesses() {
         String wrongGuess = "";
         for(String guess : wrongGuesses) {
-            wrongGuess = guess + " ";
+            wrongGuess += guess + " ";
         }
         return wrongGuess;
     }
 
     //Checking if movie contains guessed letter
     public void checkGuess(String guess) {
-        if(!movie.contains(guess)) {
+        if (guess.length() > 1) {
+            System.out.println("Please enter one letter at the time!");
+        } else if (wrongGuesses.contains(guess)) {
+            System.out.println("You already have guessed " + guess + "." +
+                    "\nTry again!");
+        } else if (!movie.contains(guess)) {
             wrongGuesses.add(guess);
+        } else if (movie.contains(guess)) {
+            replaceLetters(guess);
+        }
+
+        if (hiddenMovieName.equals(movie)) {
+            System.out.println("Congratulations, you won!" +
+                    "\nYou guessed movie " + movie + " correctly.");
+            isPlaying = false;
         }
     }
+    //Replacing correct guessed letters
+    private void replaceLetters(String letter) {
+        int index = movie.indexOf(letter);
+        char replaceLetter = letter.charAt(0);
+        List<Integer> replacementIndex = new ArrayList<>();
+        while(index >= 0) {
+            System.out.println(index);
+            replacementIndex.add(index);
+            System.out.println(replacementIndex);
+            index = movie.indexOf(letter, index + letter.length());
+        }
+
+        for (int i = 0; i < replacementIndex.size(); i++) {
+            int replace = replacementIndex.get(i);
+            System.out.println(replace);
+            System.out.println(hiddenMovieName.charAt(replace));
+            StringBuilder hiddenMovie = new StringBuilder(hiddenMovieName);
+            hiddenMovie.setCharAt(replace, replaceLetter);
+            hiddenMovieName = String.valueOf(hiddenMovie);
+        }
+        System.out.println(hiddenMovieName);
+    }
+
 }

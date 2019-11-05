@@ -12,9 +12,9 @@ public class GuessMovie {
         System.out.println(game.movie);
         System.out.println(game.hideMovie());
 
-        while(game.wrongGuesses.size() < 10) {
-            System.out.println("Guess the Movie: " + game.hideMovie());
-            System.out.println("You have guessed (" + game.wrongGuesses.size() + ") wrong letters: " + game.wrongGuesses);
+        while(game.wrongGuesses.size() < 10 || !(game.isPlaying)) {
+            System.out.println("Guess the Movie: " + game.hiddenMovieName);
+            System.out.println("You have guessed (" + game.wrongGuesses.size() + ") wrong letters: " + game.showWrongGuesses());
             System.out.print("Guess a letter: ");
             guess = input.next();
             game.checkGuess(guess);
