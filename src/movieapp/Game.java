@@ -92,15 +92,11 @@ class Game {
         char replaceLetter = letter.charAt(0);
         List<Integer> replacementIndex = new ArrayList<>();
         while(index >= 0) {
-            //System.out.println(index);
             replacementIndex.add(index);
-            //System.out.println(replacementIndex);
             index = movie.indexOf(letter, index + letter.length());
         }
 
         for (int replace : replacementIndex) {
-            //System.out.println(replace);
-            //System.out.println(hiddenMovieName.charAt(replace));
             StringBuilder hiddenMovie = new StringBuilder(hiddenMovieName);
             hiddenMovie.setCharAt(replace, replaceLetter);
             hiddenMovieName = String.valueOf(hiddenMovie);

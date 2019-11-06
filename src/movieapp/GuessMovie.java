@@ -8,9 +8,7 @@ public class GuessMovie {
         String guess = "";
         Game game = new Game();
 
-        System.out.println("Guess The Movie");
-        System.out.println(game.getMovie());
-        //System.out.println(game.hideMovie());
+        System.out.println("Guess The Movie Game");
 
         while(game.getWrongGuesses().size() < 10) {
             System.out.println("Guess the Movie: " + game.getHiddenMovieName());
