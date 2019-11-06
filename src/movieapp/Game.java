@@ -55,7 +55,7 @@ class Game {
 
     //Replace movie name with -
     private void hideMovie() {
-        hiddenMovieName = movie.replaceAll(".", "-");
+        hiddenMovieName = movie.replaceAll("[a-zA-Z0-9]", "-");
     }
 
     //Show wrong guesses

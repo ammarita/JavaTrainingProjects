@@ -12,17 +12,19 @@ public class GuessMovie {
         System.out.println(game.getMovie());
         //System.out.println(game.hideMovie());
 
-        while(game.getWrongGuesses().size() < 10 || !game.isPlaying()) {
+        while(game.getWrongGuesses().size() < 10) {
             System.out.println("Guess the Movie: " + game.getHiddenMovieName());
             System.out.println("You have guessed (" + game.getWrongGuesses().size() + ") wrong letters: " + game.showWrongGuesses());
             System.out.print("Guess a letter: ");
             guess = input.next();
             game.checkGuess(guess);
+
+            if(!game.isPlaying()) break;
         }
 
         if(game.getWrongGuesses().size() >= 10) {
             System.out.println("You lost!" +
-                    "\nYou did not guessed '" + game.getMovie() + "' correctly.");
+                    "\nYou did not guessed \'" + game.getMovie() + "\' correctly.");
         }
     }//end main
 }
