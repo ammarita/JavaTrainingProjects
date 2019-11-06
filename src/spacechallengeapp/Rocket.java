@@ -1,6 +1,12 @@
 package spacechallengeapp;
 
 public class Rocket implements SpaceShip {
+    int costs;
+    int weight;
+    int maxWeight;
+    double launchExplosionFactor;
+    double landingCrashFactor;
+
     @Override
     public boolean launch() {
         return true;
@@ -13,11 +19,15 @@ public class Rocket implements SpaceShip {
 
     @Override
     public boolean canCarry(Item item) {
-        return false;
+        if(this.weight + item.getWeight() <= this.maxWeight) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public int carry(Item item) {
-        return 0;
+    public void carry(Item item) {
+        this.weight += item.getWeight();
     }
 }
