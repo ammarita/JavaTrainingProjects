@@ -9,21 +9,20 @@ public class GuessMovie {
         Game game = new Game();
 
         System.out.println("Guess The Movie");
-        System.out.println(game.movie);
-        System.out.println(game.hideMovie());
+        System.out.println(game.getMovie());
+        //System.out.println(game.hideMovie());
 
-        while(game.wrongGuesses.size() < 10 || !(game.isPlaying)) {
-            System.out.println("Guess the Movie: " + game.hiddenMovieName);
-            System.out.println("You have guessed (" + game.wrongGuesses.size() + ") wrong letters: " + game.showWrongGuesses());
+        while(game.getWrongGuesses().size() < 10 || !game.isPlaying()) {
+            System.out.println("Guess the Movie: " + game.getHiddenMovieName());
+            System.out.println("You have guessed (" + game.getWrongGuesses().size() + ") wrong letters: " + game.showWrongGuesses());
             System.out.print("Guess a letter: ");
             guess = input.next();
             game.checkGuess(guess);
         }
 
-        if(game.wrongGuesses.size() >= 10) {
+        if(game.getWrongGuesses().size() >= 10) {
             System.out.println("You lost!" +
-                    "\nYou did not guessed '" + game.movie + "' correctly.");
+                    "\nYou did not guessed '" + game.getMovie() + "' correctly.");
         }
-
     }//end main
 }
