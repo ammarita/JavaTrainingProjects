@@ -13,7 +13,7 @@ public class U2 extends Rocket {
     @Override
     public boolean launch() {
         double random = Math.random();
-        double launchExplosionChance = (this.launchExplosionFactor * 100) * (this.weight / this.maxWeight);
+        double launchExplosionChance = (this.launchExplosionFactor / 100) * ((this.weight - 18000) / (this.maxWeight - 18000)) * 10;
         if(launchExplosionChance >= random) {
             return false;
         }
@@ -23,7 +23,7 @@ public class U2 extends Rocket {
     @Override
     public boolean land() {
         double random = Math.random();
-        double launchExplosionChance = (this.landingCrashFactor * 100) * (this.weight / this.maxWeight);
+        double launchExplosionChance = (this.landingCrashFactor / 100) * ((this.weight - 18000) / (this.maxWeight - 18000)) * 10;
         if(launchExplosionChance >= random) {
             return false;
         }
