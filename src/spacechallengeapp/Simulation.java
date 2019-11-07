@@ -20,7 +20,7 @@ class Simulation {
                 Item cargo = new Item(item[0], Integer.parseInt(item[1]));
                 items.add(cargo);
             }
-            System.out.println("Finished loading of cargo.");
+            System.out.println("Cargo prepared.");
         } catch (FileNotFoundException e) {
             System.out.println("Cargo file not found!");
             e.printStackTrace();
@@ -74,6 +74,9 @@ class Simulation {
     // runSimulation then returns the total budget required to send all rockets (including the crashed ones).
     int runSimulation(ArrayList<Rocket> rockets) {
         int totalBudget = 0;
+        int lostOnLaunch = 0;
+        int lostOnLand = 0;
+
            for(int i = 0; i < rockets.size(); i++) {
                Rocket rocket = rockets.get(i);
                System.out.println("Launching rocket...");
@@ -81,6 +84,7 @@ class Simulation {
 
                while (!rocket.launch()) {
                    totalBudget += rocket.costs;
+                   lostOnLaunch++;
                    System.out.println("Launch failed! Launching again...");
                    rocket.launch();
                }
@@ -90,14 +94,19 @@ class Simulation {
 
                while (!rocket.land()) {
                    totalBudget += rocket.costs;
+                   lostOnLand++;
                    System.out.println("Landing failed! Launching again...");
                    rocket.launch();
                }
 
-               System.out.println("Landing successful! Preparing next rocket for launch...");
+               System.out.println("Landing successful!");
+               if(rockets.size() > 0) {
+                   System.out.println("Preparing next rocket for launch...");
+               }
+
                totalBudget += rocket.costs;
            }
-        System.out.println("All cargo sent to Mars.");
+        System.out.println("All cargo sent to Mars. " + lostOnLaunch + " rockets exploded while launching and " + lostOnLand +" rockets crashed while landing.");
         return totalBudget;
     }
 }
