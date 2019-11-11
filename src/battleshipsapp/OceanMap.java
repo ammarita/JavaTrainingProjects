@@ -2,17 +2,17 @@ package battleshipsapp;
 
 import java.util.Scanner;
 
-public class OceanMap {
-    Scanner sc = new Scanner(System.in);
-    char[][] mapGrid = new char[10][10];
+class OceanMap {
+    private Scanner sc = new Scanner(System.in);
+    private char[][] mapGrid = new char[10][10];
 
-    int playersShips = 5;
-    int computersShips = 5;
+    private int playersShips = 5;
+    private int computersShips = 5;
 
-    boolean playersTurn = true;
-    boolean playing = true;
+    private boolean playersTurn = true;
+    private boolean playing = true;
 
-    public OceanMap() {
+    OceanMap() {
         System.out.println("***** Welcome to Battle Ship Game *****");
         System.out.println("\nRight now, the sea is empty.\n");
         printMap();
@@ -79,7 +79,7 @@ public class OceanMap {
         printMap();
     }
 
-    public void playersMove() {
+    private void playersMove() {
         System.out.println("Your Turn");
 
         while (playersTurn) {
@@ -111,7 +111,7 @@ public class OceanMap {
         }
     }
 
-    public void computersMove() {
+    private void computersMove() {
         System.out.println("Computer's Turn");
         int x = (int) (Math.random() * 10);
         int y = (int) (Math.random() * 10);
