@@ -10,6 +10,8 @@ public class OceanMap {
         System.out.println("***** Welcome to Battle Ship Game *****");
         System.out.println("\nRight now, the sea is empty.\n");
         printMap();
+        placePlayersShip();
+        placeComputersShips();
     }
 
     private void printMap() {
@@ -19,16 +21,18 @@ public class OceanMap {
             for (int j = 0; j < mapGrid[j].length - 1; j++) {
                 if(mapGrid[i][j] == '1') {
                     System.out.print('@');
+                } else if(mapGrid[i][j] == '2') {
+                    System.out.print('\u0000');
                 } else {
                     System.out.print(mapGrid[i][j]);
+                    }
                 }
-            }
             System.out.println("| " + i);
         }
-        System.out.println("123456789");
+        System.out.println("123456789\n");
     }
 
-    public void placePlayersShip() {
+    private void placePlayersShip() {
         System.out.println("You have 5 ships to place in the sea. Please choose the location!");
         int shipsDeployed = 1;
         while(shipsDeployed <= 5) {
@@ -49,4 +53,22 @@ public class OceanMap {
         System.out.println("Your ships are sailing in the sea!\n");
         printMap();
     }
+
+    private void placeComputersShips() {
+        System.out.println(" Computer is placing out ships");
+        int shipsDeployed = 1;
+        while (shipsDeployed <= 5) {
+            int x = (int) (Math.random() * 10);
+            int y = (int) (Math.random() * 10);
+
+            if(mapGrid[x][y] == '\u0000') {
+                mapGrid[x][y] = '2';
+                System.out.println(shipsDeployed + ". ship deployed!");
+                shipsDeployed++;
+            }
+        }
+        System.out.println("All ships are in the places!\n");
+        printMap();
+    }
+
 }
