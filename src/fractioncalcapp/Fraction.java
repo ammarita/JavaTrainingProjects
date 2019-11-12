@@ -96,7 +96,6 @@ public class Fraction {
             num = den;
             den = reminder;
         }
-
         return num;
     }
 }

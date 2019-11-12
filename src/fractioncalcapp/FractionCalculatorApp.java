@@ -5,22 +5,21 @@ import java.util.Scanner;
 public class FractionCalculatorApp {
 
     private static String getOperation(Scanner input) {
-        System.out.print("Please choose an operation (+, -, /, *, = or Q to quit): ");
         String operator = input.nextLine();
 
-        while (!operator.equals("+") && !operator.equals("-") && !operator.equals("/") && !operator.equals("*") && !operator.equals("=")) {
+        while (!operator.equals("+") && !operator.equals("-") && !operator.equals("/") && !operator.equals("*") && !operator.equals("=") && !operator.equals("Q")) {
             System.out.println("Invalid input (+, -, /, *, = or Q to quit): ");
             operator = input.nextLine();
         }
         return operator;
     }
 
-    private boolean validFraction(String input) {
+    private static boolean validFraction(String input) {
         boolean isValid = false;
 
         if(input.contains("/")) {
             String num = input.substring(0, input.indexOf("/"));
-            String den = input.substring(input.indexOf("/"));
+            String den = input.substring(input.indexOf("/") + 1);
 
             if(isNumber(num) && isNumber(den)) {
                 isValid = true;
@@ -32,7 +31,7 @@ public class FractionCalculatorApp {
         return isValid;
     }
 
-    private boolean isNumber(String input) {
+    private static boolean isNumber(String input) {
         boolean isNum = false;
         String regex = "[-]?\\d+";
 
@@ -43,7 +42,7 @@ public class FractionCalculatorApp {
         return isNum;
     }
 
-    private Fraction getFraction(Scanner input) {
+    private static Fraction getFraction(Scanner input) {
         int num = 0;
         int den = 0;
         System.out.print("Please enter a fraction (a/b) or an integer (a): ");
@@ -56,7 +55,7 @@ public class FractionCalculatorApp {
 
         if(fraction.contains("/")) {
             num = Integer.parseInt(fraction.substring(0, fraction.indexOf("/")));
-            den = Integer.parseInt(fraction.substring(fraction.indexOf("/")));
+            den = Integer.parseInt(fraction.substring(fraction.indexOf("/") + 1));
         } else {
             num = Integer.parseInt(fraction);
         }
@@ -64,11 +63,46 @@ public class FractionCalculatorApp {
         return new Fraction(num, den);
     }
 
+    private static void readInput(String input) {
+
+    }
+
     public static void main(String[] args) {
         System.out.println("This program is a fraction calculator");
         System.out.println("It will add, subtract, multiply and divide fractions until you type Q to quit.");
         System.out.println("Please enter your fractions in the form a/b, where a and b are integers.");
-        System.out.println("--------------------------------------------------------------------------------");
 
+        while (true) {
+            System.out.println("--------------------------------------------------------------------------------");
+            System.out.print("Please choose an operation (+, -, /, *, = or Q to quit): ");
+            String operation = getOperation(new Scanner(System.in));
+
+            if (operation.equals("Q")) {
+                System.exit(0);
+            }
+
+            Fraction fraction1 = getFraction(new Scanner(System.in));
+            Fraction fraction2 = getFraction(new Scanner(System.in));
+
+            switch (operation) {
+                case "+":
+                    System.out.println(fraction1.toString() + " + " + fraction2.toString() + " = " + fraction1.add(fraction2));
+                    break;
+                case "-":
+                    System.out.println(fraction1.toString() + " - " + fraction2.toString() + " = " + fraction1.subtract(fraction2));
+                    break;
+                case "/":
+                    System.out.println(fraction1.toString() + " / " + fraction2.toString() + " = " + fraction1.divide(fraction2));
+                    break;
+                case "*":
+                    System.out.println(fraction1.toString() + " * " + fraction2.toString() + " = " + fraction1.multiply(fraction2));
+                    break;
+                case "=":
+                    System.out.println(fraction1.toString() + " = " + fraction2.toString() + " is " + fraction1.equals(fraction2));
+                    break;
+                default:
+                    System.out.println("Something went wrong. Try again!");
+            }
+        }
     }//end main
 }
