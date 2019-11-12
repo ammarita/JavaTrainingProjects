@@ -7,7 +7,7 @@ public class FractionCalculatorApp {
     private static String getOperation(Scanner input) {
         String operator = input.nextLine();
 
-        while (!operator.equals("+") && !operator.equals("-") && !operator.equals("/") && !operator.equals("*") && !operator.equals("=") && !operator.equals("Q")) {
+        while (!operator.equals("+") && !operator.equals("-") && !operator.equals("/") && !operator.equals("*") && !operator.equals("=") && !operator.equalsIgnoreCase("q")) {
             System.out.println("Invalid input (+, -, /, *, = or Q to quit): ");
             operator = input.nextLine();
         }
@@ -43,8 +43,8 @@ public class FractionCalculatorApp {
     }
 
     private static Fraction getFraction(Scanner input) {
-        int num = 0;
-        int den = 0;
+        int num;
+        int den;
         System.out.print("Please enter a fraction (a/b) or an integer (a): ");
         String fraction = input.nextLine();
 
@@ -58,13 +58,10 @@ public class FractionCalculatorApp {
             den = Integer.parseInt(fraction.substring(fraction.indexOf("/") + 1));
         } else {
             num = Integer.parseInt(fraction);
+            den = 1;
         }
 
         return new Fraction(num, den);
-    }
-
-    private static void readInput(String input) {
-
     }
 
     public static void main(String[] args) {
@@ -77,7 +74,7 @@ public class FractionCalculatorApp {
             System.out.print("Please choose an operation (+, -, /, *, = or Q to quit): ");
             String operation = getOperation(new Scanner(System.in));
 
-            if (operation.equals("Q")) {
+            if (operation.equalsIgnoreCase("q")) {
                 System.exit(0);
             }
 
