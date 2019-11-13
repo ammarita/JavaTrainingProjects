@@ -2,13 +2,21 @@ package fractioncalcapp;
 
 import java.util.Scanner;
 
+//same functionality as other calculator app, but user input is done in one line
 public class FractionCalculatorAdvanced {
 
     private static String getOperation(Scanner input) {
-        String operator = input.nextLine();
+        String[] array = input.nextLine().split(" ");
 
-        while (!operator.equals("+") && !operator.equals("-") && !operator.equals("/") && !operator.equals("*") && !operator.equals("=") && !operator.equalsIgnoreCase("q")) {
-            System.out.println("Invalid input (+, -, /, *, = or Q to quit): ");
+        String num = array[0];
+        String operator = array[1];
+        String den = array[2];
+
+
+        while (!operator.equals("+") && !operator.equals("-") && !operator.equals("/") && !operator.equals("*")
+                && !operator.equals("=") && !operator.equalsIgnoreCase("q") && !isNumber(num) && !isNumber(den)) {
+            System.out.println("Invalid operation. Must be \"[FRAC] [OPERATION] [FRAC]\".");
+            System.out.print("Enter an operation (q to quit): ");
             operator = input.nextLine();
         }
         return operator;

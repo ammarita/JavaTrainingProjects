@@ -83,7 +83,9 @@ public class FractionCalculatorApp {
 
             switch (operation) {
                 case "+":
-                    System.out.println(fraction1.toString() + " + " + fraction2.toString() + " = " + fraction1.add(fraction2));
+                    Fraction answer = fraction1.add(fraction2);
+                    answer.toLowestTerms();
+                    System.out.println(fraction1.toString() + " + " + fraction2.toString() + " = " + answer.toString());
                     break;
                 case "-":
                     System.out.println(fraction1.toString() + " - " + fraction2.toString() + " = " + fraction1.subtract(fraction2));
