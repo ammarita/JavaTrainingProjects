@@ -11,7 +11,7 @@ public class Giant extends Critter {
     //always infect if an enemy is in front, otherwise hop if possible, otherwise turn right.
     @Override
     public Action getMove(CritterInfo info) {
-        if(info.getFront() == Neighbor.OTHER) {
+        if(info.frontThreat()) {
             moves++;
             return Action.INFECT;
         } else if(info.getFront() == Neighbor.EMPTY) {

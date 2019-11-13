@@ -11,7 +11,7 @@ public class WhiteTiger extends Critter {
     //Same as a Tiger
     @Override
     public Action getMove(CritterInfo info) {
-        if(info.getFront() == Neighbor.OTHER) {
+        if(info.frontThreat()) {
             this.hasInfected = true;
             return Action.INFECT;
         } else if(info.getFront() == Neighbor.WALL || info.getRight() == Neighbor.WALL) {
