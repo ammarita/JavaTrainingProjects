@@ -13,7 +13,7 @@ public class Bear extends Critter {
     //always infect if an enemy is in front, otherwise hop if possible, otherwise turn left.
     @Override
     public Action getMove(CritterInfo info) {
-        if(info.frontThreat()) {
+        if(info.getFront() == Neighbor.OTHER) {
             moves++;
             return Action.INFECT;
         } else if(info.getFront() == Neighbor.EMPTY) {

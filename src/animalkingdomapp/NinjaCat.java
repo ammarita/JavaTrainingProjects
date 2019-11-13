@@ -8,7 +8,7 @@ public class NinjaCat extends Critter {
 
     @Override
     public Action getMove(CritterInfo info) {
-        if(info.frontThreat() || info.backThreat()) {
+        if(info.getFront() == Neighbor.OTHER || info.getBack() == Neighbor.OTHER) {
             return Action.INFECT;
         } else if (info.getFront() == Neighbor.WALL) {
             return Action.RIGHT;

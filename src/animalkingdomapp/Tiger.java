@@ -11,7 +11,7 @@ public class Tiger extends Critter {
     // then turn left, otherwise if a fellow Tiger is in front, then turn right, otherwise hop.
     @Override
     public Action getMove(CritterInfo info) {
-        if(info.frontThreat()) {
+        if(info.getFront() == Neighbor.OTHER) {
             moves++;
             return Action.INFECT;
         } else if(info.getFront() == Neighbor.WALL || info.getRight() == Neighbor.WALL) {
