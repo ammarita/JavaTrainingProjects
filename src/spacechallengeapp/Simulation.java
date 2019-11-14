@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Simulation {
-//    private ArrayList<Item> items = new ArrayList<>();
-//    private ArrayList<U1> U1Rockets = new ArrayList<>();
-//    private ArrayList<U2> U2Rockets = new ArrayList<>();
 
     //method loads all items from a text file and returns an ArrayList of Items
     ArrayList<Item> loadItems(File file) {
@@ -43,7 +40,6 @@ class Simulation {
                 U1Rockets.add(u1);
                 u1 = new U1();
             }
-            //System.out.println("Rocket loaded.");
         }
         System.out.println("Loaded " + U1Rockets.size() + " U1 rockets.");
         return U1Rockets;
@@ -62,7 +58,6 @@ class Simulation {
                 U2Rockets.add(u2);
                 u2 = new U2();
             }
-            //System.out.println("Rocket loaded.");
         }
         System.out.println("Loaded " + U2Rockets.size() + " U2 rockets.");
         return U2Rockets;
