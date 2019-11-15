@@ -24,10 +24,11 @@ public class MazeRunnerApp {
     }
 
     private static String move() {
-        while(!move.equalsIgnoreCase("r") || !move.equalsIgnoreCase("l") || !move.equalsIgnoreCase("u") || !move.equalsIgnoreCase("d")) {
+        do {
             System.out.print("Where would you like to move? (R, L, U, D) ");
             move = sc.next();
         }
+        while(!move.equalsIgnoreCase("r") || !move.equalsIgnoreCase("l") || !move.equalsIgnoreCase("u") || !move.equalsIgnoreCase("d"));
         return move;
     }
 
@@ -69,6 +70,18 @@ public class MazeRunnerApp {
         while (!maze.didIWin()) {
             move();
             checkMove(move);
+        }
+    }
+
+    private static void movesMessage(int movesCount) {
+        if(movesCount == 50) {
+            System.out.println("Warning: You have made 50 moves, you have 50 remaining before the maze exit closes.");
+        } else if (movesCount == 75) {
+            System.out.println("Alert! You have made 75 moves, you only have 25 moves left to escape.");
+        } else if (movesCount == 90) {
+            System.out.println("DANGER! You have made 90 moves, you only have 10 moves left to escape!!");
+        } else if (movesCount == 100) {
+            System.out.println("Oh no! You took too long to escape, and now the maze exit is closed FOREVER >:[");
         }
     }
 
