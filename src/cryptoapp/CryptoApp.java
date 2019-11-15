@@ -10,7 +10,9 @@ public class CryptoApp {
         String input = "This is some \"really\" great. (Text)!?";
         crypto.normalizeText(input);
         System.out.println(crypto.getInput());
-        System.out.println(crypto.caesarify(crypto.getInput(), -2));
+        System.out.println(crypto.caesarify(crypto.getInput(), 4));
+        String toGroup = crypto.caesarify(crypto.getInput(), 4);
+        System.out.println(crypto.groupify(toGroup, 4));
 
     }
 }
